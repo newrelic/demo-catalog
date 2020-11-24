@@ -10,7 +10,7 @@ This repository hosts a collection of demo scenarios. These demo scenarios can b
 
 ## Catalog
 
-Have a look at the full [demo catalog](CATALOG.md)
+Have a look at the full [demo catalog](catalog/README.md)
 
 ## Related repositories
 * [demo-deployer](https://github.com/newrelic/demo-deployer): Responsible for deploying and configuring the demo scenarios in various cloud providers.
