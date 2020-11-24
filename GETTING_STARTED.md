@@ -39,7 +39,7 @@ Now that you've set up your local environment and chosen a demo, you can deploy 
 ```console
 $ docker run -it\
     -v $HOME/configs/:/mnt/deployer/configs/\
-    --entrypoint ruby deployer main.rb -c configs/<username>.docker.local.json -d <demo-url>
+    --entrypoint ruby ghcr.io/newrelic/deployer main.rb -c configs/<username>.docker.local.json -d <demo-url>
 ```
 
 Don't forget to replace `<username>` and `<demo-url>` in this command. `<username>` is the same username you used when you created your credentials file. `<demo-url>` is the url or local path to your deployment configuration file.
