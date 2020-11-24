@@ -112,5 +112,5 @@ You may want to see a more detailed output of what the deployer is doing. You ca
 ```console
 $ docker run -it\
     -v /home/jerard/configs/:/mnt/deployer/configs/\
-    --entrypoint ruby deployer main.rb -c configs/<username>.docker.local.json -d <demo-url> -l debug
+    --entrypoint ruby ghcr.io/newrelic/deployer main.rb -c configs/<username>.docker.local.json -d <demo-url> -l debug
 ```
