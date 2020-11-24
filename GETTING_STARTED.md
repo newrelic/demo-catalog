@@ -75,7 +75,7 @@ When you're finished with the demo, you can tear down all the services you creat
 ```console
 $ docker run -it\
     -v $HOME/configs/:/mnt/deployer/configs/\
-    --entrypoint ruby deployer main.rb -c configs/<username>.docker.local.json -d <demo-url> -t
+    --entrypoint ruby ghcr.io/newrelic/deployer main.rb -c configs/<username>.docker.local.json -d <demo-url> -t
 [INFO] Executing Teardown
 [✔] Parsing and validating Teardown configuration success
 [✔] Provisioner success
@@ -98,7 +98,7 @@ While running docker, you may see the error below:
 ```console
 $ docker run -it\
     -v /home/jerard/configs/:/mnt/deployer/configs/\
-    --entrypoint ruby deployer main.rb -c configs/<username>.docker.local.json -d <demo-url>
+    --entrypoint ruby ghcr.io/newrelic/deployer main.rb -c configs/<username>.docker.local.json -d <demo-url>
 docker: Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?.
 See ‘docker run --help’.
 ```
