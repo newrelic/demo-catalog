@@ -49,10 +49,10 @@ If you named your user config file something other than 'user.credentials.json' 
 ```console
 $ docker run -it\
     -v $HOME/configs/:/mnt/deployer/configs/\
-    --entrypoint ruby ghcr.io/newrelic/deployer main.rb -c configs/<username>.docker.local.json -d <demo-url>
+    --entrypoint ruby ghcr.io/newrelic/deployer main.rb -c configs/<user-config-filename> -d <demo-url>
 ```
 
-Don't forget to replace `<username>` and `<demo-url>` in this command. `<username>` is the same username you used when you created your credentials file.
+Don't forget to replace `<user-config-filename>` and `<demo-url>` in this command.
 
 > **Technical Detail:** Any file dependency needed by the deployer needs to be explicitly handled through the use of a mounted volume (using `-v`). To make things simpler, we only mount your local `$HOME/configs` directory so that all the files in that folder will be accessible by the docker image. The location for that `/configs` folder in the docker image will be `/mnt/deployer/configs`.
 >
