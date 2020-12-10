@@ -150,12 +150,12 @@
 		{
                     "destination_filepath": "engine/createDeploymentMarker.sh",
                     "executable": true,
-                    "content": "http://host.docker.internal:5000/scripts/createDeploymentMarker.sh"
+                    "content": "https://raw.githubusercontent.com/newrelic/demo-catalog/DEMO-2462-infra-events/catalog/scripts/createDeploymentMarker.sh"
                 },
                 {
                     "destination_filepath": "engine/createInfraEvent.sh",
                     "executable": true,
-                    "content": "http://host.docker.internal:5000/scripts/createInfraEvent.sh"
+                    "content": "https://raw.githubusercontent.com/newrelic/demo-catalog/DEMO-2462-infra-events/catalog/scripts/createInfraEvent.sh"
                 }
 
             ]
@@ -212,7 +212,7 @@
                     "content": [
                         {
                             "frequency": "6,35 * * * *",
-                            "job": "supervisorctl restart login"
+                            "job": "sudo supervisorctl restart login"
                         }
                     ]
                 }

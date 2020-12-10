@@ -29,6 +29,6 @@ options="{ \"deployment\": { \
 \"user\": \"alec@acmetelco.com\" }}"
 			
 log "Payload: $options"
-result=curl -X POST "$base_api_url/v2/applications/$service_id/deployments.json" -H "api-key:$api_key" -H "content-type: application/json" -d "$options"
+result=`curl -X POST "$base_api_url/v2/applications/$service_id/deployments.json" -H "api-key:$api_key" -H "content-type: application/json" -d "$options"`
 log "Result: $result"
 log "Done."

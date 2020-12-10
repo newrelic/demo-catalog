@@ -56,6 +56,6 @@ else
 fi
 
 log "Payload: $payload"
-result=curl -X POST "$base_infra_api_url/inventory/state/bulk" -H "X-License-Key: $license_key" -H "User-Agent: New Relic Infrastructure Agent" -H "Content-Type: application/json" -d "$payload"
+result=`curl -X POST "$base_infra_api_url/inventory/state/bulk" -H "X-License-Key: $license_key" -H "User-Agent: New Relic Infrastructure Agent" -H "Content-Type: application/json" -d "$payload"`
 log "Result: $result"
 log "Done."
