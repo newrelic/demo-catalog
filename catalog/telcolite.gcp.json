@@ -307,7 +307,7 @@
             "display_name": "Telco-Authentication-host",
             "provider": "gcp",
             "type": "compute",
-            "size": "e2-micro"
+            "size": "e2-small"
         },
         {
             "id": "backendhost",
