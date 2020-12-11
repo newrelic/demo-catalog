@@ -31,7 +31,7 @@
                                 }
                             ]
                         },
-                        {
+			{
                             "id": "scenarioConsumerMemory",
                             "rpm": "0",
                             "steps": [
@@ -112,17 +112,17 @@
                             "frequency": "1-59/5 * * * *",
                             "job": "curl -i \"[service:simulator]/api/scenario/scenarioReporting/stop\""
                         },
-                        {
+			{
                             "frequency": "5,34 * * * *",
-                            "job": "/home/vm-user/simulator/createInfraEvent.sh connect >> createInfraEvent.log"
+                            "job": "/home/ec2-user/simulator/createInfraEvent.sh connect >> createInfraEvent.log"
                         },
                         {
                             "frequency": "6 * * * *",
-                            "job": "/home/vm-user/simulator/createDeploymentMarker.sh 4.0.0 \"Add the V4 API\" >> createDeploymentMarker.log"
+                            "job": "/home/ec2-user/simulator/createDeploymentMarker.sh 4.0.0 \"Add the V4 API\" >> createDeploymentMarker.log"
                         },
                         {
                             "frequency": "7,36 * * * *",
-                            "job": "/home/vm-user/simulator/createInfraEvent.sh disconnect >> createInfraEvent.log"
+                            "job": "/home/ec2-user/simulator/createInfraEvent.sh disconnect >> createInfraEvent.log"
                         },
                         {
                             "frequency": "10 * * * *",
@@ -142,20 +142,22 @@
                         },
                         {
                             "frequency": "35 * * * *",
-                            "job": "/home/vm-user/simulator/createDeploymentMarker.sh 3.9.2 \"Roll back to latest stable release\" >> createDeploymentMarker.log"
+                            "job": "/home/ec2-user/simulator/createDeploymentMarker.sh 3.9.2 \"Roll back to latest stable release\" >> createDeploymentMarker.log"
                         }
+
                     ]
                 },
-                {
+		{
                     "destination_filepath": "engine/createDeploymentMarker.sh",
                     "executable": true,
-                    "content": "https://raw.githubusercontent.com/newrelic/demo-catalog/main/catalog/scripts/createDeploymentMarker.sh"
+                    "content": "https://raw.githubusercontent.com/newrelic/demo-catalog/main/catalog/telco_lite/scripts/createDeploymentMarker.sh"
                 },
                 {
                     "destination_filepath": "engine/createInfraEvent.sh",
                     "executable": true,
-                    "content": "https://raw.githubusercontent.com/newrelic/demo-catalog/main/catalog/scripts/createInfraEvent.sh"
+                    "content": "https://raw.githubusercontent.com/newrelic/demo-catalog/main/catalog/telco_lite/scripts/createInfraEvent.sh"
                 }
+
             ]
         },
         {
@@ -291,37 +293,44 @@
     "resources": [
         {
             "id": "simuhost",
-            "provider": "azure",
-            "type": "vm",
-            "size": "Standard_B1s"
+            "provider": "aws",
+            "type": "ec2",
+            "size": "t3.small"
         },
         {
             "id": "uihost",
             "display_name": "Telco-UI-host",
-            "provider": "azure",
-            "type": "vm",
-            "size": "Standard_B1s"
+            "provider": "aws",
+            "type": "ec2",
+            "size": "t3.micro"
         },
         {
             "id": "authhost",
             "display_name": "Telco-Authentication-host",
-            "provider": "azure",
-            "type": "vm",
-            "size": "Standard_B1s"
+            "provider": "aws",
+            "type": "ec2",
+            "size": "t3a.micro"
         },
         {
             "id": "backendhost",
             "display_name": "Telco-Backend-host",
-            "provider": "azure",
-            "type": "vm",
-            "size": "Standard_B1s"
+            "provider": "aws",
+            "type": "ec2",
+            "size": "t2.small",
+            "cpu_credit_specification": "unlimited"
         },
         {
             "id": "reportinghost",
             "display_name": "Telco-Reporting-host",
-            "provider": "azure",
-            "type": "vm",
-            "size": "Standard_B1s"
+            "provider": "aws",
+            "type": "ec2",
+            "size": "t3a.micro"
+        },
+        {
+            "id": "storage1",
+            "provider": "aws",
+            "type": "s3",
+            "bucket_name": "terraform-[global:deployment_name]"
         }
     ],
     "instrumentations": {
@@ -405,9 +414,11 @@
                     "login"
                 ],
                 "provider": "newrelic",
+                "provider_credential": "aws",
                 "source_repository": "https://github.com/newrelic/demo-newrelic-instrumentation.git",
-                "deploy_script_path": "deploy/alerts/restapi/roles",
+                "deploy_script_path": "deploy/alerts/terraform/roles",
                 "params": {
+                    "s3_bucketname_tfstate": "terraform-[global:deployment_name]",
                     "alert_duration": 5,
                     "alert_response_time_threshold": 5,
                     "alert_throughput_threshold": 5,
@@ -420,8 +431,12 @@
             {
                 "id": "nr_golden_dashboard",
                 "provider": "newrelic",
+                "provider_credential": "aws",
                 "source_repository": "https://github.com/newrelic/demo-newrelic-instrumentation.git",
-                "deploy_script_path": "deploy/dashboards/golden/restapi/roles"
+                "deploy_script_path": "deploy/dashboards/golden/terraform/roles",
+                "params": {
+                    "s3_bucketname_tfstate": "terraform-[global:deployment_name]"
+                }
             },
             {
                 "id": "nr_golden_workload",
@@ -430,11 +445,11 @@
                 "deploy_script_path": "deploy/workloads/golden/restapi/roles"
             },
             {
-                "id": "nr_azure_integration",
+                "id": "nr_aws_integration",
                 "provider": "newrelic",
-                "provider_credential": "azure",
+                "provider_credential": "aws",
                 "source_repository": "https://github.com/newrelic/demo-newrelic-instrumentation.git",
-                "deploy_script_path": "deploy/cloud_providers/azure/restapi/roles"
+                "deploy_script_path": "deploy/cloud_providers/aws/restapi/roles"
             }
         ]
     }

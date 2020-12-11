@@ -114,15 +114,15 @@
                         },
                         {
                             "frequency": "5,34 * * * *",
-                            "job": "/home/compute-user/simulator/createInfraEvent.sh connect >> createInfraEvent.log"
+                            "job": "/home/vm-user/simulator/createInfraEvent.sh connect >> createInfraEvent.log"
                         },
                         {
                             "frequency": "6 * * * *",
-                            "job": "/home/compute-user/simulator/createDeploymentMarker.sh 4.0.0 \"Add the V4 API\" >> createDeploymentMarker.log"
+                            "job": "/home/vm-user/simulator/createDeploymentMarker.sh 4.0.0 \"Add the V4 API\" >> createDeploymentMarker.log"
                         },
                         {
                             "frequency": "7,36 * * * *",
-                            "job": "/home/compute-user/simulator/createInfraEvent.sh disconnect >> createInfraEvent.log"
+                            "job": "/home/vm-user/simulator/createInfraEvent.sh disconnect >> createInfraEvent.log"
                         },
                         {
                             "frequency": "10 * * * *",
@@ -142,19 +142,19 @@
                         },
                         {
                             "frequency": "35 * * * *",
-                            "job": "/home/compute-user/simulator/createDeploymentMarker.sh 3.9.2 \"Roll back to latest stable release\" >> createDeploymentMarker.log"
+                            "job": "/home/vm-user/simulator/createDeploymentMarker.sh 3.9.2 \"Roll back to latest stable release\" >> createDeploymentMarker.log"
                         }
                     ]
                 },
                 {
                     "destination_filepath": "engine/createDeploymentMarker.sh",
                     "executable": true,
-                    "content": "https://raw.githubusercontent.com/newrelic/demo-catalog/main/catalog/scripts/createDeploymentMarker.sh"
+                    "content": "https://raw.githubusercontent.com/newrelic/demo-catalog/main/catalog/telco_lite/scripts/createDeploymentMarker.sh"
                 },
                 {
                     "destination_filepath": "engine/createInfraEvent.sh",
                     "executable": true,
-                    "content": "https://raw.githubusercontent.com/newrelic/demo-catalog/main/catalog/scripts/createInfraEvent.sh"
+                    "content": "https://raw.githubusercontent.com/newrelic/demo-catalog/main/catalog/telco_lite/scripts/createInfraEvent.sh"
                 }
             ]
         },
@@ -291,37 +291,37 @@
     "resources": [
         {
             "id": "simuhost",
-            "provider": "gcp",
-            "type": "compute",
-            "size": "e2-micro"
+            "provider": "azure",
+            "type": "vm",
+            "size": "Standard_B1s"
         },
         {
             "id": "uihost",
             "display_name": "Telco-UI-host",
-            "provider": "gcp",
-            "type": "compute",
-            "size": "e2-small"
+            "provider": "azure",
+            "type": "vm",
+            "size": "Standard_B1s"
         },
         {
             "id": "authhost",
             "display_name": "Telco-Authentication-host",
-            "provider": "gcp",
-            "type": "compute",
-            "size": "e2-small"
+            "provider": "azure",
+            "type": "vm",
+            "size": "Standard_B1s"
         },
         {
             "id": "backendhost",
             "display_name": "Telco-Backend-host",
-            "provider": "gcp",
-            "type": "compute",
-            "size": "n1-standard-1"
+            "provider": "azure",
+            "type": "vm",
+            "size": "Standard_B1s"
         },
         {
             "id": "reportinghost",
             "display_name": "Telco-Reporting-host",
-            "provider": "gcp",
-            "type": "compute",
-            "size": "e2-small"
+            "provider": "azure",
+            "type": "vm",
+            "size": "Standard_B1s"
         }
     ],
     "instrumentations": {
@@ -430,11 +430,11 @@
                 "deploy_script_path": "deploy/workloads/golden/restapi/roles"
             },
             {
-                "id": "nr_gcp_integration",
+                "id": "nr_azure_integration",
                 "provider": "newrelic",
-                "provider_credential": "gcp",
+                "provider_credential": "azure",
                 "source_repository": "https://github.com/newrelic/demo-newrelic-instrumentation.git",
-                "deploy_script_path": "deploy/cloud_providers/gcp/restapi/roles"
+                "deploy_script_path": "deploy/cloud_providers/azure/restapi/roles"
             }
         ]
     }
