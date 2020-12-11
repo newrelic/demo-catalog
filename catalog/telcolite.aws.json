@@ -24,6 +24,25 @@
                                     ]
                                 },
                                 {
+                                    "name": "httpGet",
+                                    "params": [
+                                        "[service:webportal]/api/inventory"
+                                    ]
+                                }
+                            ]
+                        },
+			{
+                            "id": "scenarioConsumerMemory",
+                            "rpm": "0",
+                            "steps": [
+                                {
+                                    "name": "header",
+                                    "params": [
+                                        "x-demo-compute-pre-fulfillment",
+                                        "[40,60]"
+                                    ]
+                                },
+                                {
                                     "name": "header",
                                     "params": [
                                         "x-demo-malloc-pre-login",
@@ -93,17 +112,52 @@
                             "frequency": "1-59/5 * * * *",
                             "job": "curl -i \"[service:simulator]/api/scenario/scenarioReporting/stop\""
                         },
+			{
+                            "frequency": "5,34 * * * *",
+                            "job": "/home/ec2-user/simulator/createInfraEvent.sh connect >> createInfraEvent.log"
+                        },
                         {
-                            "frequency": "0-59/20 * * * *",
-                            "job": "/home/ec2-user/simulator/createDeploymentMarker.sh >> createDeploymentMarker.log"
+                            "frequency": "6 * * * *",
+                            "job": "/home/ec2-user/simulator/createDeploymentMarker.sh 4.0.0 \"Add the V4 API\" >> createDeploymentMarker.log"
+                        },
+                        {
+                            "frequency": "7,36 * * * *",
+                            "job": "/home/ec2-user/simulator/createInfraEvent.sh disconnect >> createInfraEvent.log"
+                        },
+                        {
+                            "frequency": "10 * * * *",
+                            "job": "curl -i \"[service:simulator]/api/scenario/scenarioConsumer/stop\""
+                        },
+                        {
+                            "frequency": "10 * * * *",
+                            "job": "curl -i \"[service:simulator]/api/scenario/scenarioConsumerMemory/start?rpm=30\""
+                        },
+                        {
+                            "frequency": "30 * * * *",
+                            "job": "curl -i \"[service:simulator]/api/scenario/scenarioConsumer/start?rpm=30\""
+                        },
+                        {
+                            "frequency": "30 * * * *",
+                            "job": "curl -i \"[service:simulator]/api/scenario/scenarioConsumerMemory/stop\""
+                        },
+                        {
+                            "frequency": "35 * * * *",
+                            "job": "/home/ec2-user/simulator/createDeploymentMarker.sh 3.9.2 \"Roll back to latest stable release\" >> createDeploymentMarker.log"
                         }
+
                     ]
                 },
-                {
+		{
                     "destination_filepath": "engine/createDeploymentMarker.sh",
                     "executable": true,
-                    "content": "#!/bin/bash\n service_display_name=\"[service:login:display_name]\";api_key=\"[credential:newrelic:personal_api_key]\";base_api_url=\"[app_config:newrelic:api_url]\";options_1='{ \"deployment\": { \"revision\": \"';options_2='\", \"description\": \"added a deployments resource to the v2 api\", \"user\": \"aswanson@newrelic.com\" }}';options_new=\"${options_1}4.0.0${options_2}\";options_old=\"${options_1}3.9.1${options_2}\";service_id=`curl -X get \"$base_api_url/v2/applications.json\" -H \"api-key:$api_key\" -d \"filter[name]=$service_display_name\"|jq -r '.applications[0].id'`;current_version=`curl -X get \"$base_api_url/v2/applications/$service_id/deployments.json\" -H \"api-key:$api_key\"|jq -r '.deployments[0].revision'`;if [[ $current_version == \"3.9.1\" ]];then options=$options_new;else options=$options_old;fi;curl -X post \"$base_api_url/v2/applications/$service_id/deployments.json\" -H \"api-key:$api_key\" -i -H \"content-type: application/json\" -d \"$options\""
+                    "content": "https://raw.githubusercontent.com/newrelic/demo-catalog/main/catalog/scripts/createDeploymentMarker.sh"
+                },
+                {
+                    "destination_filepath": "engine/createInfraEvent.sh",
+                    "executable": true,
+                    "content": "https://raw.githubusercontent.com/newrelic/demo-catalog/main/catalog/scripts/createInfraEvent.sh"
                 }
+
             ]
         },
         {
@@ -151,6 +205,17 @@
             },
             "destinations": [
                 "authhost"
+            ],
+            "files": [
+                {
+                    "destination_filepath": "javatron/cronjob.json",
+                    "content": [
+                        {
+                            "frequency": "6,35 * * * *",
+                            "job": "sudo supervisorctl restart login"
+                        }
+                    ]
+                }
             ]
         },
         {
