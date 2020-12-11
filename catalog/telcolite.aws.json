@@ -150,12 +150,12 @@
 		{
                     "destination_filepath": "engine/createDeploymentMarker.sh",
                     "executable": true,
-                    "content": "https://raw.githubusercontent.com/newrelic/demo-catalog/DEMO-2462-infra-events/catalog/scripts/createDeploymentMarker.sh"
+                    "content": "https://raw.githubusercontent.com/newrelic/demo-catalog/main/catalog/scripts/createDeploymentMarker.sh"
                 },
                 {
                     "destination_filepath": "engine/createInfraEvent.sh",
                     "executable": true,
-                    "content": "https://raw.githubusercontent.com/newrelic/demo-catalog/DEMO-2462-infra-events/catalog/scripts/createInfraEvent.sh"
+                    "content": "https://raw.githubusercontent.com/newrelic/demo-catalog/main/catalog/scripts/createInfraEvent.sh"
                 }
 
             ]
