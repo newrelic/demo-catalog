@@ -9,7 +9,7 @@ In this guide, you will learn how to:
 
 ## Prerequisites
 * Make sure you have [Docker](https://docs.docker.com/get-docker/) installed
-* Pull the latest version of the demo-deployer: 
+* Pull the latest version of the demo-deployer:
   ```console
   $ docker pull ghcr.io/newrelic/deployer:latest
   ```
@@ -19,12 +19,12 @@ In this guide, you will learn how to:
 Create a directory in your home folder called `configs`:
 
 ```console
-$ mkdir $HOME/configs
+$ mkdir $HOME/demo-deployer/configs
 ```
 
-You'll store your configuration files in this folder and expose it to the demo-deployer.
+You'll store your configuration files in this folder to make it easy for the deployer.
 
-Next, follow the steps [here to create your local user config file](https://github.com/newrelic/demo-deployer/blob/main/documentation/user_config/README.md). Store this local user config file at `$HOME/configs/<username>.docker.local.json`. You use that file when you run the deployer.
+Next, follow the steps [here to create your local user config file](https://github.com/newrelic/demo-deployer/blob/main/documentation/user_config/README.md). You can store your local user config file at `$HOME/demo-deployer/configs/user.credentials.local.json` and the deployer will pick up your user configuration automatically. If you name your user config file differently, you will need to pass the '-c' flag with the path and name of your user config file.
 
 ## Select a demo scenario
 
@@ -38,11 +38,11 @@ Now that you've set up your local environment and chosen a demo, you can deploy 
 
 ```console
 $ docker run -it\
-    -v $HOME/configs/:/mnt/deployer/configs/\
-    --entrypoint ruby ghcr.io/newrelic/deployer main.rb -c configs/<username>.docker.local.json -d <demo-url>
+    -v $HOME/demo-deployer/configs/:/mnt/deployer/configs/\
+    --entrypoint ruby ghcr.io/newrelic/deployer main.rb -d <demo-url>
 ```
 
-Don't forget to replace `<username>` and `<demo-url>` in this command. `<username>` is the same username you used when you created your credentials file. `<demo-url>` is the url or local path to your deployment configuration file.
+Don't forget to replace `<demo-url>` with the url or local path to a deployment configuration file.
 
 > **Technical Detail:** Any file dependency needed by the deployer needs to be explicitly handled through the use of a mounted volume (using `-v`). To make things simpler, we only mount your local `$HOME/configs` directory so that all the files in that folder will be accessible by the docker image. The location for that `/configs` folder in the docker image will be `/mnt/deployer/configs`.
 >
@@ -74,7 +74,7 @@ When you're finished with the demo, you can tear down all the services you creat
 
 ```console
 $ docker run -it\
-    -v $HOME/configs/:/mnt/deployer/configs/\
+    -v $HOME/demo-deployer/configs/:/mnt/deployer/configs/\
     --entrypoint ruby ghcr.io/newrelic/deployer main.rb -c configs/<username>.docker.local.json -d <demo-url> -t
 [INFO] Executing Teardown
 [✔] Parsing and validating Teardown configuration success
@@ -97,7 +97,7 @@ While running docker, you may see the error below:
 
 ```console
 $ docker run -it\
-    -v /home/jerard/configs/:/mnt/deployer/configs/\
+    -v $HOME/demo-deployer/configs/:/mnt/deployer/configs/\
     --entrypoint ruby ghcr.io/newrelic/deployer main.rb -c configs/<username>.docker.local.json -d <demo-url>
 docker: Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?.
 See ‘docker run --help’.
