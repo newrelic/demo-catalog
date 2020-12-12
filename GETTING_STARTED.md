@@ -19,10 +19,10 @@ In this guide, you will learn how to:
 Create a directory in your home folder called `configs`:
 
 ```console
-$ mkdir $HOME/configs
+$ mkdir $HOME/demo-deployer/configs
 ```
 
-You'll store your configuration files in this folder and expose it to the demo-deployer.
+You'll store your configuration files in this folder to make it easy for the deployer.
 
 Next, follow the steps [here to create your local user config file](https://github.com/newrelic/demo-deployer/blob/main/documentation/user_config/README.md). You can store your local user config file at `$HOME/demo-deployer/configs/user.credentials.local.json` and the deployer will pick up your user configuration automatically. If you name your user config file differently, you will need to pass the '-c' flag with the path and name of your user config file.
 
@@ -38,7 +38,7 @@ Now that you've set up your local environment and chosen a demo, you can deploy 
 
 ```console
 $ docker run -it\
-    -v $HOME/configs/:/mnt/deployer/configs/\
+    -v $HOME/demo-deployer/configs/:/mnt/deployer/configs/\
     --entrypoint ruby ghcr.io/newrelic/deployer main.rb -d <demo-url>
 ```
 
@@ -74,7 +74,7 @@ When you're finished with the demo, you can tear down all the services you creat
 
 ```console
 $ docker run -it\
-    -v $HOME/configs/:/mnt/deployer/configs/\
+    -v $HOME/demo-deployer/configs/:/mnt/deployer/configs/\
     --entrypoint ruby ghcr.io/newrelic/deployer main.rb -c configs/<username>.docker.local.json -d <demo-url> -t
 [INFO] Executing Teardown
 [✔] Parsing and validating Teardown configuration success
@@ -97,7 +97,7 @@ While running docker, you may see the error below:
 
 ```console
 $ docker run -it\
-    -v /home/jerard/configs/:/mnt/deployer/configs/\
+    -v $HOME/demo-deployer/configs/:/mnt/deployer/configs/\
     --entrypoint ruby ghcr.io/newrelic/deployer main.rb -c configs/<username>.docker.local.json -d <demo-url>
 docker: Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?.
 See ‘docker run --help’.
