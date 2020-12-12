@@ -24,7 +24,7 @@ $ mkdir $HOME/configs
 
 You'll store your configuration files in this folder and expose it to the demo-deployer.
 
-Next, follow the steps [here to create your local user config file](https://github.com/newrelic/demo-deployer/blob/main/documentation/user_config/README.md). You can store your local user config file at `$HOME/configs/user.credentials.json` and the deployer will pick up your user configuration automatically. If you name your user config file differently, you will need to pass the '-c' flag with the path and name of your user config file.
+Next, follow the steps [here to create your local user config file](https://github.com/newrelic/demo-deployer/blob/main/documentation/user_config/README.md). You can store your local user config file at `$HOME/demo-deployer/configs/user.credentials.local.json` and the deployer will pick up your user configuration automatically. If you name your user config file differently, you will need to pass the '-c' flag with the path and name of your user config file.
 
 ## Select a demo scenario
 
@@ -43,16 +43,6 @@ $ docker run -it\
 ```
 
 Don't forget to replace `<demo-url>` with the url or local path to a deployment configuration file.
-
-If you named your user config file something other than 'user.credentials.json' use this command:
-
-```console
-$ docker run -it\
-    -v $HOME/configs/:/mnt/deployer/configs/\
-    --entrypoint ruby ghcr.io/newrelic/deployer main.rb -c configs/<user-config-filename> -d <demo-url>
-```
-
-Don't forget to replace `<user-config-filename>` and `<demo-url>` in this command.
 
 > **Technical Detail:** Any file dependency needed by the deployer needs to be explicitly handled through the use of a mounted volume (using `-v`). To make things simpler, we only mount your local `$HOME/configs` directory so that all the files in that folder will be accessible by the docker image. The location for that `/configs` folder in the docker image will be `/mnt/deployer/configs`.
 >
