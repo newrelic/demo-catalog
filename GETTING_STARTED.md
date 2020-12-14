@@ -19,12 +19,12 @@ In this guide, you will learn how to:
 Create a directory in your home folder called `configs`:
 
 ```console
-$ mkdir $HOME/demo-deployer/configs
+$ mkdir -p $HOME/demo-deployer/configs
 ```
 
 You'll store your configuration files in this folder to make it easy for the deployer.
 
-Next, follow the steps [here to create your local user config file](https://github.com/newrelic/demo-deployer/blob/main/documentation/user_config/README.md). You can store your local user config file at `$HOME/demo-deployer/configs/user.credentials.json` and the deployer will pick up your user configuration automatically. If you name your user config file differently, you will need to pass the '-c' flag with the path and name of your user config file.
+Next, follow the steps [here to create your local user config file](https://github.com/newrelic/demo-deployer/blob/main/documentation/user_config/README.md). You can store your local user config file at `$HOME/demo-deployer/configs/user.credentials.local.json` and the deployer will pick up your user configuration automatically. If you name your user config file differently, you will need to pass the '-c' flag with the path and name of your user config file.
 
 ## Select a demo scenario
 
