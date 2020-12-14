@@ -8,11 +8,11 @@ The demo tutorials can be deployed with the [demo-deployer](https://github.com/n
 
 [Follow our Getting Started guide](GETTING_STARTED.md) to get the demo-deployer setup first!
 
-# Tutorials
+# Tutorials : How to build a demo
 
 ## Deploying a single host
 
-In this [first tutorial](tutorial_single_host/README.md) you will learn how to deploy a single host.
+In this [first tutorial](tutorial_single_host) you will learn how to deploy a single host.
 
 ## Deploying a service on a host
 
