@@ -2,11 +2,11 @@
 
 # Demo Catalog
 
-This repository hosts a collection of demo stories. These demo story can be deployed with the [demo-deployer](https://github.com/newrelic/demo-deployer).
+This repository hosts a collection of demo stories. A demo story can be deployed with the [demo-deployer](https://github.com/newrelic/demo-deployer).
 
 ## What is a demo story
 
-In our case a demo story is a set of services that are deployed to show off a particular common use case in a modern micro service architecture.  All demos are represented as a well defined JSON file that is then passed along to the [demo-deployer](https://github.com/newrelic/demo-deployer).
+A demo story is a set of services that are deployed to show off a particular common use case in a modern micro service architecture.  All demos are represented as a well defined JSON file that is then passed along to the [demo-deployer](https://github.com/newrelic/demo-deployer).
 
 ## Deploy your first demo story
 
