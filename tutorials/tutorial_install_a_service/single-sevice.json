@@ -1,0 +1,21 @@
+{
+  "resources": [
+    {
+      "id": "compute",
+      "provider": "aws",
+      "type": "ec2",
+      "size": "t2.micro"
+    }
+  ],
+  "services": [
+    {
+      "id": "service",
+      "display_name": "Single Service",
+      "source_repository": "https://github.com/newrelic/demo-nodetron.git",
+      "deploy_script_path": "/deploy/linux/roles",
+      "port": 5000,
+      "relationships": [],
+      "destinations": ["compute"]
+    }
+  ]
+}

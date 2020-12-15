@@ -12,11 +12,11 @@ The demo tutorials can be deployed with the [demo-deployer](https://github.com/n
 
 ## Deploying a single host
 
-In this [first tutorial](tutorial_single_host) you will learn how to deploy a single host.
+In this [first tutorial](tutorial_provision_a_host) you will learn how to deploy a single host.
 
 ## Deploying a service on a host
 
-In this second tutorial you will learn how to install a single service on a host.
+In this [second tutorial](tutorial_install_a_service) you will learn how to install a single service on a host.
 
 ## Observing the host and service
 
