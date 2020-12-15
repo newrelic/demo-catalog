@@ -6,7 +6,7 @@ If you have not got the demo-deployer setup please follow our [getting started g
 
 # Tutorial : How to build a demo: Installing a Service
 
-In this second tutorial we will be building on the [first tutorial](../tutorial_provision_a_host) provision a host and then installing a service on the host.  Anything that will be installed on a host is defined in block called 'services' within a deployment configuration file.
+In this second tutorial we will be building on the [first tutorial](../tutorial_provision_a_host) provision a host and then installing a service on the host.  Anything that will be installed on a host is defined in block called "services" within a deployment configuration file.
 
 [Example deploy configuration](single-sevice.json):
 
@@ -38,13 +38,13 @@ In the above configuration we define a single service that will be installed on 
 
 | Field Name         |  Field Description |
 | ------------------ | ------------------ |
-| id                 | 'id' is used for referring to the service for defining relationships and for instrumentation targeting |
-| display_name       | 'display_name' is used by instrumentation as the services name  |
-| source_repository  | 'source_repository' the local path or git repo where the code for the service lives |
-| deploy_script_path | 'deploy_script_path' the location of the ansibe play that will be invoked to actually install the service |
-| port               | 'port' the port that the service will be listening on and will be opened for communication on the host |
-| relationships      | 'relationships' the other services this service will communicate with |
-| destinations       | 'destinations'  the hosts that this service will be installed on |
+| id                 | is used for referring to the service for defining relationships and for instrumentation targeting |
+| display_name       | is used by instrumentation as the services name  |
+| source_repository  | the local path or git repo where the code for the service lives |
+| deploy_script_path | the location of the ansibe play that will be invoked to actually install the service |
+| port               | the port that the service will be listening on and will be opened for communication on the host |
+| relationships      | the other services this service will communicate with |
+| destinations       | the hosts that this service will be installed on |
 
 
 ## Installing the single service on a host
@@ -93,7 +93,8 @@ To tear down the single host you can execute this command:
 docker run -it\
     -v $HOME/demo-deployer/configs/:/mnt/deployer/configs/\
     --entrypoint ruby ghcr.io/newrelic/deployer main.rb\
-    -d https://raw.githubusercontent.com/newrelic/demo-catalog/DEMO-2499-tutorial-single-host/tutorials/tutorial_single_host/single-service.json -t
+    -d https://raw.githubusercontent.com/newrelic/demo-catalog/DEMO-2499-tutorial-single-host/tutorials/tutorial_single_host/single-service.json\
+    --teardown
 ```
 
 *TODO: remove 'DEMO-2499-tutorial-single-host' before merging*
