@@ -41,7 +41,7 @@ To run this deployment and provision a single host you can execute this command:
 docker run -it\
     -v $HOME/demo-deployer/configs/:/mnt/deployer/configs/\
     --entrypoint ruby ghcr.io/newrelic/deployer main.rb\
-    -d https://raw.githubusercontent.com/newrelic/demo-catalog/DEMO-2499-tutorial-single-host/tutorials/tutorial_single_host/single-host.json
+    -d https://raw.githubusercontent.com/newrelic/demo-catalog/DEMO-2499-tutorial-single-host/tutorials/tutorial_provision_a_host/single-host.json
 ```
 
 *TODO: remove 'DEMO-2499-tutorial-single-host' before merging*
@@ -80,7 +80,7 @@ To tear down the single host you can execute this command:
 docker run -it\
     -v $HOME/demo-deployer/configs/:/mnt/deployer/configs/\
     --entrypoint ruby ghcr.io/newrelic/deployer main.rb\
-    -d https://raw.githubusercontent.com/newrelic/demo-catalog/DEMO-2499-tutorial-single-host/tutorials/tutorial_single_host/single-host.json -t
+    -d https://raw.githubusercontent.com/newrelic/demo-catalog/DEMO-2499-tutorial-single-host/tutorials/tutorial_provision_a_host/single-host.json -t
 ```
 
 *TODO: remove 'DEMO-2499-tutorial-single-host' before merging*
