@@ -46,6 +46,33 @@ docker run -it\
 
 *TODO: remove 'DEMO-2499-tutorial-single-host' before merging*
 
+## After installing the single service
+
+Once the demo-deployer is done you should get nice output showing you what was deployed.
+
+```
+[INFO] Deployment successful!
+
+
+Deployed Resources:
+
+  compute (aws/ec2):
+    ip: XX.XXX.XX.XXX
+
+
+Installed Services:
+
+Completed at 2020-12-15 19:21:15 +0000
+
+[INFO] This deployment summary can also be found in:
+[INFO]   /tmp/user-single-host/deploy_summary.txt
+```
+
+If you take the IP address for your host you can access it via SSH.
+
+    ssh ec2-user@XX.XXX.XX.XXX -i PATH/TO/YOUR/PEM_KEY.pem
+
+
 ## Tearing down the single host
 To tear down the single host you can execute this command:
 
