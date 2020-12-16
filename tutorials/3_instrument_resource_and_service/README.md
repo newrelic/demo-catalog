@@ -6,7 +6,7 @@ If you have not got the demo-deployer setup please follow our [getting started g
 
 # Tutorial : How to build a demo: Instrumentation a resource and service
 
-In this third tutorial we will be creating a deploy configuration that will provision a single resource, install a service on that resource and setup New Relic instrumentation on both.  All instrumentation is defined in a block called "instrument" within a deployment configuration JSON file.  The demo-deployer will install and setup the New Relic instrumentation using the user configuration credentials you provided in the demo-deployer setup.
+In this third tutorial we will be creating a deploy configuration that will provision a single resource, install a service on that resource and setup New Relic instrumentation on both.  All instrumentation is defined in a block call "instrumentations" within a deployment configuration JSON file.  The demo-deployer will install and setup the New Relic instrumentation using the user configuration credentials you provided in the demo-deployer setup.
 
 
 [Example deployment configuration](instrumentation.json):
@@ -32,7 +32,7 @@ In this third tutorial we will be creating a deploy configuration that will prov
       "destinations": ["compute"]
     }
   ],
-	"instrumentations": {
+  "instrumentations": {
     "resources": [
       {
         "id": "nr_infra",
@@ -74,10 +74,8 @@ In the above configuration we define two instrumentation blocks that setup the o
 docker run -it\
     -v $HOME/demo-deployer/configs/:/mnt/deployer/configs/\
     --entrypoint ruby ghcr.io/newrelic/deployer main.rb\
-    -d https://raw.githubusercontent.com/newrelic/demo-catalog/DEMO-2499-tutorial-single-host/tutorials/3_instrument_resource_and_service/instrumentation.json
+    -d https://raw.githubusercontent.com/newrelic/demo-catalog/main/tutorials/3_instrument_resource_and_service/instrumentation.json
 ```
-
-*TODO: remove 'DEMO-2499-tutorial-single-host' before merging*
 
 ## After installing the single service
 
@@ -118,11 +116,9 @@ To tear down the single resource, service and instrumentation you can execute th
 docker run -it\
     -v $HOME/demo-deployer/configs/:/mnt/deployer/configs/\
     --entrypoint ruby ghcr.io/newrelic/deployer main.rb\
-    -d https://raw.githubusercontent.com/newrelic/demo-catalog/DEMO-2499-tutorial-single-host/tutorials/3_instrument_resource_and_service/instrumentation.json\
+    -d https://raw.githubusercontent.com/newrelic/demo-catalog/main/tutorials/3_instrument_resource_and_service/instrumentation.json\
     --teardown
 ```
-
-*TODO: remove 'DEMO-2499-tutorial-single-host' before merging*
 
 
 

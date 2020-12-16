@@ -53,10 +53,8 @@ In the above configuration we define a single service that will be installed on 
 docker run -it\
     -v $HOME/demo-deployer/configs/:/mnt/deployer/configs/\
     --entrypoint ruby ghcr.io/newrelic/deployer main.rb\
-    -d https://raw.githubusercontent.com/newrelic/demo-catalog/DEMO-2499-tutorial-single-host/tutorials/2_install_a_service/single-service.json
+    -d https://raw.githubusercontent.com/newrelic/demo-catalog/main/tutorials/2_install_a_service/single-service.json
 ```
-
-*TODO: remove 'DEMO-2499-tutorial-single-host' before merging*
 
 ## After installing the single service
 
@@ -93,8 +91,6 @@ To tear down the single resource and service you can execute this command:
 docker run -it\
     -v $HOME/demo-deployer/configs/:/mnt/deployer/configs/\
     --entrypoint ruby ghcr.io/newrelic/deployer main.rb\
-    -d https://raw.githubusercontent.com/newrelic/demo-catalog/DEMO-2499-tutorial-single-host/tutorials/2_install_a_service/single-service.json\
+    -d https://raw.githubusercontent.com/newrelic/demo-catalog/main/tutorials/2_install_a_service/single-service.json\
     --teardown
 ```
-
-*TODO: remove 'DEMO-2499-tutorial-single-host' before merging*
