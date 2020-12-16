@@ -1,14 +1,14 @@
 [![Experimental Project header](https://github.com/newrelic/opensource-website/raw/master/src/images/categories/Experimental.png)](https://opensource.newrelic.com/oss-category/#experimental)
 
-# Demo Catalog : Tutorial : Single Host
+# Demo Catalog : Tutorial : Single Resource
 
-If you have not got the demo-deployer setup please follow our [getting started guide](/GETTING_STARTED.md) and get your AWS credential setup before working through this tutorial.
+If you have not got the demo-deployer setup please follow our [getting started guide](/GETTING_STARTED.md) and get your [AWS credentials setup](https://github.com/newrelic/demo-deployer/blob/main/documentation/user_config/aws.md) before working through this tutorial.
 
-# Tutorial : How to build a demo: Deploying a single host
+# Tutorial : How to build a demo: Deploying a single resource
 
-In this first tutorial we will be creating a deploy configuration for a single host provisioned in Amazon Web Services(AWS) public cloud.  All cloud resources are defined in a block called "resources" within a deployment configuration JSON file.  The demo-deployer will provision these resources using the user configuration credentials you provided in the demo-deployer setup.
+In this first tutorial we will be creating a deploy configuration for a single resource provisioned in Amazon Web Services(AWS) public cloud.  All cloud resources are defined in a block called "resources" within a deployment configuration JSON file.  The demo-deployer will provision these resources using the user configuration credentials you provided in the demo-deployer setup.
 
-[Example deploy configuration](single-host.json):
+[Example deploy configuration](single-resource.json):
 
 ```
 {
@@ -34,14 +34,14 @@ In the above configuration we define a single resource that will be provisioned.
 
 Do note that these are the fields only for creating a resource in AWS.  There are slightly different fields for each cloud providers compute instances.
 
-## Provisioning the single host
-To run this deployment and provision a single host you can execute this command:
+## Provisioning the single resource
+To run this deployment and provision a single resource you can execute this command:
 
 ```
 docker run -it\
     -v $HOME/demo-deployer/configs/:/mnt/deployer/configs/\
     --entrypoint ruby ghcr.io/newrelic/deployer main.rb\
-    -d https://raw.githubusercontent.com/newrelic/demo-catalog/DEMO-2499-tutorial-single-host/tutorials/tutorial_provision_a_host/single-host.json
+    -d https://raw.githubusercontent.com/newrelic/demo-catalog/DEMO-2499-tutorial-single-host/tutorials/1_tutorial_provision_a_resource/single-resource.json
 ```
 
 *TODO: remove 'DEMO-2499-tutorial-single-host' before merging*
@@ -65,22 +65,22 @@ Installed Services:
 Completed at 2020-12-15 19:21:15 +0000
 
 [INFO] This deployment summary can also be found in:
-[INFO]   /tmp/user-single-host/deploy_summary.txt
+[INFO]   /tmp/user-single-resource/deploy_summary.txt
 ```
 
-If you take the IP address for your host you can access it via SSH.
+If you take the IP address for your resource you can access it via SSH.
 
     ssh ec2-user@XX.XXX.XX.XXX -i PATH/TO/YOUR/PEM_KEY.pem
 
 
-## Tearing down the single host
-To tear down the single host you can execute this command:
+## Tearing down the single resource
+To tear down the single resource you can execute this command:
 
 ```
 docker run -it\
     -v $HOME/demo-deployer/configs/:/mnt/deployer/configs/\
     --entrypoint ruby ghcr.io/newrelic/deployer main.rb\
-    -d https://raw.githubusercontent.com/newrelic/demo-catalog/DEMO-2499-tutorial-single-host/tutorials/tutorial_provision_a_host/single-host.json\
+    -d https://raw.githubusercontent.com/newrelic/demo-catalog/DEMO-2499-tutorial-single-host/tutorials/1_tutorial_provision_a_resource/single-resource.json\
     --teardown
 ```
 
