@@ -6,7 +6,7 @@ If you have not got the demo-deployer setup please follow our [getting started g
 
 # Tutorial : How to build a demo: Installing a Service
 
-In this second tutorial we will be building on the [first tutorial](../tutorial_provision_a_host) provision a host and then installing a service on the host.  Anything that will be installed on a host is defined in block called "services" within a deployment configuration file.
+In this second tutorial we will be building on the [first tutorial](../tutorial_provision_a_host) provision a host and then installing a service on the host.  Anything that will be installed on a host is defined in a block called "services" within a deployment configuration file.
 
 [Example deploy configuration](single-service.json):
 
@@ -22,8 +22,8 @@ In this second tutorial we will be building on the [first tutorial](../tutorial_
   ],
   "services": [
     {
-      "id": "service",
-      "display_name": "Single Service",
+      "id": "nodetron",
+      "display_name": "Nodetron Service",
       "source_repository": "https://github.com/newrelic/demo-nodetron.git",
       "deploy_script_path": "/deploy/linux/roles",
       "port": 5000,

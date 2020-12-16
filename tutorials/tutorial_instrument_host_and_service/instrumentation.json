@@ -1,0 +1,43 @@
+{
+  "resources": [
+    {
+      "id": "compute",
+      "provider": "aws",
+      "type": "ec2",
+      "size": "t2.micro"
+    }
+  ],
+  "services": [
+    {
+      "id": "nodetron",
+      "display_name": "Nodetron Service",
+      "source_repository": "https://github.com/newrelic/demo-nodetron.git",
+      "deploy_script_path": "/deploy/linux/roles",
+      "port": 5000,
+      "relationships": [],
+      "destinations": ["compute"]
+    }
+  ],
+	"instrumentations": {
+    "resources": [
+      {
+        "id": "nr_infra",
+        "resource_ids": ["compute"],
+        "provider": "newrelic",
+        "source_repository": "-b main https://github.com/newrelic/demo-newrelic-instrumentation.git",
+        "deploy_script_path": "deploy/linux/roles",
+        "version": "1.12.1"
+      }
+    ],
+    "services": [
+      {
+        "id": "nr_node_agent",
+        "service_ids": ["nodetron"],
+        "provider": "newrelic",
+        "source_repository": "-b main https://github.com/newrelic/demo-newrelic-instrumentation.git",
+        "deploy_script_path": "deploy/node/linux/roles",
+        "version": "6.11.0"
+      }
+    ]
+  }
+}
