@@ -18,7 +18,7 @@
       "destinations": ["compute"]
     }
   ],
-	"instrumentations": {
+  "instrumentations": {
     "resources": [
       {
         "id": "nr_infra",
