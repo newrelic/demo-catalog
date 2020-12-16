@@ -6,7 +6,7 @@ The demo tutorials can be deployed with the [demo-deployer](https://github.com/n
 
 ## Getting started before following the tutorials
 
-[Follow our Getting Started guide](GETTING_STARTED.md) to get the demo-deployer setup first!
+If you have not got the demo-deployer setup please follow our [getting started guide](/GETTING_STARTED.md) and get your [AWS credentials setup](https://github.com/newrelic/demo-deployer/blob/main/documentation/user_config/aws.md) before working through this tutorial.
 
 # Tutorials : How to build a demo
 
