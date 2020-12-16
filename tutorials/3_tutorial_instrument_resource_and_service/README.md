@@ -1,12 +1,12 @@
 [![Experimental Project header](https://github.com/newrelic/opensource-website/raw/master/src/images/categories/Experimental.png)](https://opensource.newrelic.com/oss-category/#experimental)
 
-# Demo Catalog : Tutorial : Single Host
+# Demo Catalog : Tutorial : Instrument a Resource and Service
 
 If you have not got the demo-deployer setup please follow our [getting started guide](/GETTING_STARTED.md) and get your AWS and New Relic credential setup before working through this tutorial.
 
-# Tutorial : How to build a demo: Instrumentation a host and service
+# Tutorial : How to build a demo: Instrumentation a resource and service
 
-In this third tutorial we will be creating a deploy configuration that will provision a single host, install a service on that host and setup New Relic instrumentation on both.  All instrumentation is defined in a block called "instrument" within a deployment configuration JSON file.  The demo-deployer will install and setup the New Relic instrumentation using the user configuration credentials you provided in the demo-deployer setup.
+In this third tutorial we will be creating a deploy configuration that will provision a single resource, install a service on that resource and setup New Relic instrumentation on both.  All instrumentation is defined in a block called "instrument" within a deployment configuration JSON file.  The demo-deployer will install and setup the New Relic instrumentation using the user configuration credentials you provided in the demo-deployer setup.
 
 
 [Example deploy configuration](instrumentation.json):
@@ -57,7 +57,7 @@ In this third tutorial we will be creating a deploy configuration that will prov
 }
 ```
 
-In the above configuration we define two instrumentation blocks that setup the on host and in service New Relic instrumentation. Here is a quick summary of what each of the service fields mean:
+In the above configuration we define two instrumentation blocks that setup the on resource and in service New Relic instrumentation. Here is a quick summary of what each of the service fields mean:
 
 | Field Name               |  Field Description |
 | ------------------------ | ------------------ |
@@ -68,13 +68,13 @@ In the above configuration we define two instrumentation blocks that setup the o
 | deploy_script_path       | the location of the Ansible play that will be invoked to actually install the service |
 | version                  | the version of the instrumentation to be installed |
 
-## Installing the single service on a host
+## Installing the single service on a resource
 
 ```
 docker run -it\
     -v $HOME/demo-deployer/configs/:/mnt/deployer/configs/\
     --entrypoint ruby ghcr.io/newrelic/deployer main.rb\
-    -d https://raw.githubusercontent.com/newrelic/demo-catalog/DEMO-2499-tutorial-single-host/tutorials/tutorial_instrument_host_and_service/instrumentation.json
+    -d https://raw.githubusercontent.com/newrelic/demo-catalog/DEMO-2499-tutorial-single-host/tutorials/3_tutorial_instrument_resource_and_service/instrumentation.json
 ```
 
 *TODO: remove 'DEMO-2499-tutorial-single-host' before merging*
@@ -111,14 +111,14 @@ Completed at 2020-12-16 00:22:14 +0000
 
 If you visit your New Relic One account you will be able to find two entities: "Nodetron Service" and "compute".
 
-## Tearing down the single host
-To tear down the single host you can execute this command:
+## Tearing down
+To tear down the single resource, service and instrumentation you can execute this command:
 
 ```
 docker run -it\
     -v $HOME/demo-deployer/configs/:/mnt/deployer/configs/\
     --entrypoint ruby ghcr.io/newrelic/deployer main.rb\
-    -d https://raw.githubusercontent.com/newrelic/demo-catalog/DEMO-2499-tutorial-single-host/tutorials/tutorial_instrument_host_and_service/instrumentation.json\
+    -d https://raw.githubusercontent.com/newrelic/demo-catalog/DEMO-2499-tutorial-single-host/tutorials/3_tutorial_instrument_resource_and_service/instrumentation.json\
     --teardown
 ```
 

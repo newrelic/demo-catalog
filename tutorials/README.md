@@ -20,5 +20,5 @@ In this [second tutorial](2_tutorial_install_a_service) you will learn how to in
 
 ## Observing the host and service
 
-In this [third tutorial](tutorial_instrument_host_and_service) you will learn how install New Relic agents on the host and service.
+In this [third tutorial](3_tutorial_instrument_resource_and_service) you will learn how install New Relic agents on the host and service.
 

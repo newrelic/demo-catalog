@@ -6,7 +6,7 @@ If you have not got the demo-deployer setup please follow our [getting started g
 
 # Tutorial : How to build a demo: Installing a Service
 
-In this second tutorial we will be building on the [first tutorial](../1_tutorial_provision_a_resource) provision a host and then installing a service on the host.  Anything that will be installed on a host is defined in a block called "services" within a deployment configuration file.
+In this second tutorial we will be building on the [first tutorial](../1_tutorial_provision_a_resource) provision a resource and then installing a service on the resource.  Anything that will be installed on a resource is defined in a block called "services" within a deployment configuration file.
 
 [Example deploy configuration](single-service.json):
 
@@ -34,7 +34,7 @@ In this second tutorial we will be building on the [first tutorial](../1_tutoria
 }
 ```
 
-In the above configuration we define a single service that will be installed on the 'compute' host.  Here is a quick summary of what each of the service fields mean:
+In the above configuration we define a single service that will be installed on the 'compute' resource.  Here is a quick summary of what each of the service fields mean:
 
 | Field Name         |  Field Description |
 | ------------------ | ------------------ |
@@ -42,12 +42,12 @@ In the above configuration we define a single service that will be installed on 
 | display_name       | is used by instrumentation as the service display name  |
 | source_repository  | the local path or git repo where the code for the service lives |
 | deploy_script_path | the location of the Ansible play that will be invoked to actually install the service |
-| port               | the port that the service will be listening on and will be opened for communication on the host |
+| port               | the port that the service will be listening on and will be opened for communication on the resource |
 | relationships      | the other services this service will communicate with |
-| destinations       | the hosts that this service will be installed on |
+| destinations       | the resource that this service will be installed on |
 
 
-## Installing the single service on a host
+## Installing the single service on a resource
 
 ```
 docker run -it\
@@ -86,8 +86,8 @@ Completed at 2020-12-15 19:07:47 +0000
 
 If you take the URL from the output and paste it into a web browser you will see the Nodetron services web UI.
 
-## Tearing down the single host
-To tear down the single host you can execute this command:
+## Tearing down the single resource and service
+To tear down the single resource and service you can execute this command:
 
 ```
 docker run -it\
