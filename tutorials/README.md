@@ -12,13 +12,13 @@ The demo tutorials can be deployed with the [demo-deployer](https://github.com/n
 
 ## Deploying a single resource
 
-In this [first tutorial](1_tutorial_provision_a_resource) you will learn how to deploy a single resource.
+In this [first tutorial](1_provision_a_resource) you will learn how to deploy a single resource.
 
 ## Deploying a service on a resource
 
-In this [second tutorial](2_tutorial_install_a_service) you will learn how to install a single service on a resource.
+In this [second tutorial](2_install_a_service) you will learn how to install a single service on a resource.
 
 ## Observing the resource and service
 
-In this [third tutorial](3_tutorial_instrument_resource_and_service) you will learn how install New Relic agents on the resource and service.
+In this [third tutorial](3_instrument_resource_and_service) you will learn how install New Relic agents on the resource and service.
 

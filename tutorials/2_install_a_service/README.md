@@ -6,7 +6,7 @@ If you have not got the demo-deployer setup please follow our [getting started g
 
 # Tutorial : How to build a demo: Installing a Service
 
-In this second tutorial we will be building on the [first tutorial](../1_tutorial_provision_a_resource) provision a resource and then installing a service on the resource.  Anything that will be installed on a resource is defined in a block called "services" within a deployment configuration file.
+In this second tutorial we will be building on the [first tutorial](../1_provision_a_resource) provision a resource and then installing a service on the resource.  Anything that will be installed on a resource is defined in a block called "services" within a deployment configuration file.
 
 [Example deploy configuration](single-service.json):
 
@@ -53,7 +53,7 @@ In the above configuration we define a single service that will be installed on 
 docker run -it\
     -v $HOME/demo-deployer/configs/:/mnt/deployer/configs/\
     --entrypoint ruby ghcr.io/newrelic/deployer main.rb\
-    -d https://raw.githubusercontent.com/newrelic/demo-catalog/DEMO-2499-tutorial-single-host/tutorials/2_tutorial_install_a_service/single-service.json
+    -d https://raw.githubusercontent.com/newrelic/demo-catalog/DEMO-2499-tutorial-single-host/tutorials/2_install_a_service/single-service.json
 ```
 
 *TODO: remove 'DEMO-2499-tutorial-single-host' before merging*
@@ -93,7 +93,7 @@ To tear down the single resource and service you can execute this command:
 docker run -it\
     -v $HOME/demo-deployer/configs/:/mnt/deployer/configs/\
     --entrypoint ruby ghcr.io/newrelic/deployer main.rb\
-    -d https://raw.githubusercontent.com/newrelic/demo-catalog/DEMO-2499-tutorial-single-host/tutorials/2_tutorial_install_a_service/single-service.json\
+    -d https://raw.githubusercontent.com/newrelic/demo-catalog/DEMO-2499-tutorial-single-host/tutorials/2_install_a_service/single-service.json\
     --teardown
 ```
 

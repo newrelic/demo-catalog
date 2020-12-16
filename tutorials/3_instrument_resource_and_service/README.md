@@ -74,7 +74,7 @@ In the above configuration we define two instrumentation blocks that setup the o
 docker run -it\
     -v $HOME/demo-deployer/configs/:/mnt/deployer/configs/\
     --entrypoint ruby ghcr.io/newrelic/deployer main.rb\
-    -d https://raw.githubusercontent.com/newrelic/demo-catalog/DEMO-2499-tutorial-single-host/tutorials/3_tutorial_instrument_resource_and_service/instrumentation.json
+    -d https://raw.githubusercontent.com/newrelic/demo-catalog/DEMO-2499-tutorial-single-host/tutorials/3_instrument_resource_and_service/instrumentation.json
 ```
 
 *TODO: remove 'DEMO-2499-tutorial-single-host' before merging*
@@ -118,7 +118,7 @@ To tear down the single resource, service and instrumentation you can execute th
 docker run -it\
     -v $HOME/demo-deployer/configs/:/mnt/deployer/configs/\
     --entrypoint ruby ghcr.io/newrelic/deployer main.rb\
-    -d https://raw.githubusercontent.com/newrelic/demo-catalog/DEMO-2499-tutorial-single-host/tutorials/3_tutorial_instrument_resource_and_service/instrumentation.json\
+    -d https://raw.githubusercontent.com/newrelic/demo-catalog/DEMO-2499-tutorial-single-host/tutorials/3_instrument_resource_and_service/instrumentation.json\
     --teardown
 ```
 
