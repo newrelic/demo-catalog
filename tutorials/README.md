@@ -16,7 +16,7 @@ In this [first tutorial](1_tutorial_provision_a_resource) you will learn how to 
 
 ## Deploying a service on a host
 
-In this [second tutorial](tutorial_install_a_service) you will learn how to install a single service on a host.
+In this [second tutorial](2_tutorial_install_a_service) you will learn how to install a single service on a host.
 
 ## Observing the host and service
 
