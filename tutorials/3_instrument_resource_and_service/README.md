@@ -9,7 +9,7 @@ If you have not got the demo-deployer setup please follow our [getting started g
 In this third tutorial we will be creating a deploy configuration that will provision a single resource, install a service on that resource and setup New Relic instrumentation on both.  All instrumentation is defined in a block called "instrument" within a deployment configuration JSON file.  The demo-deployer will install and setup the New Relic instrumentation using the user configuration credentials you provided in the demo-deployer setup.
 
 
-[Example deploy configuration](instrumentation.json):
+[Example deployment configuration](instrumentation.json):
 
 ```
 {

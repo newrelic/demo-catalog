@@ -2,13 +2,13 @@
 
 # Demo Catalog : Tutorial : Install a Service
 
-If you have not got the demo-deployer setup please follow our [getting started guide](/GETTING_STARTED.md) and get your AWS credential setup before working through this tutorial.
+If you have not got the demo-deployer setup please follow our [getting started guide](/GETTING_STARTED.md) and get your [AWS credentials](https://github.com/newrelic/demo-deployer/blob/main/documentation/user_config/aws.md) and [New Relic credentials](https://github.com/newrelic/demo-deployer/blob/main/documentation/user_config/newrelic.md) setup before working through this tutorial
 
 # Tutorial : How to build a demo: Installing a Service
 
-In this second tutorial we will be building on the [first tutorial](../1_provision_a_resource) provision a resource and then installing a service on the resource.  Anything that will be installed on a resource is defined in a block called "services" within a deployment configuration file.
+In this second tutorial we will be building on the [first tutorial](../1_provision_a_resource) provisioning a resource and then installing a service on the resource.  Anything that will be installed on a resource is defined in a block called "services" within a deployment configuration file.
 
-[Example deploy configuration](single-service.json):
+[Example deployment configuration](single-service.json):
 
 ```
 {
@@ -34,7 +34,7 @@ In this second tutorial we will be building on the [first tutorial](../1_provisi
 }
 ```
 
-In the above configuration we define a single service that will be installed on the 'compute' resource.  Here is a quick summary of what each of the service fields mean:
+In the above configuration we define a single service that will be installed on the "compute" resource.  Here is a quick summary of what each of the service fields mean:
 
 | Field Name         |  Field Description |
 | ------------------ | ------------------ |

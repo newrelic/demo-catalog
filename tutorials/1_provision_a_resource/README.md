@@ -8,7 +8,7 @@ If you have not got the demo-deployer setup please follow our [getting started g
 
 In this first tutorial we will be creating a deploy configuration for a single resource provisioned in Amazon Web Services(AWS) public cloud.  All cloud resources are defined in a block called "resources" within a deployment configuration JSON file.  The demo-deployer will provision these resources using the user configuration credentials you provided in the demo-deployer setup.
 
-[Example deploy configuration](single-resource.json):
+[Example deployment configuration](single-resource.json):
 
 ```
 {
@@ -23,7 +23,7 @@ In this first tutorial we will be creating a deploy configuration for a single r
 }
 ```
 
-In the above configuration we define a single resource that will be provisioned.  Here is a quick summary of what each of the fields mean:
+In the above deployment configuration we define a single resource that will be provisioned.  Here is a quick summary of what each of the fields mean:
 
 | Field Name    |  Field Description |
 | ------------- | ------------------ |
@@ -32,7 +32,7 @@ In the above configuration we define a single resource that will be provisioned.
 | type          | is the type of resource to be provisioned       |
 | size          | specifies the specific ec2 size you want provisioned |
 
-Do note that these are the fields only for creating a resource in AWS.  There are slightly different fields for each cloud providers compute instances.
+Do note that these are the fields for creating a EC2 resource in AWS. There are slightly different fields for each resource type and cloud provider.
 
 ## Provisioning the single resource
 To run this deployment and provision a single resource you can execute this command:
