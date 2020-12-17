@@ -18,16 +18,16 @@ jobs:
       env:
         AWS_PEM: ${{ secrets.CATALOG_DEPLOY_V3_AWS_US_WEST_1_PEM }}
       run: |
-        rm -f config/catalog_us_west_1.pem
-        mkdir config
-        echo "$AWS_PEM" > config/catalog_us_west_1.pem
-        sudo chmod 400 config/catalog_us_west_1.pem
+        rm -f configs/catalog_us_west_1.pem
+        mkdir configs
+        echo "$AWS_PEM" > configs/catalog_us_west_1.pem
+        sudo chmod 400 configs/catalog_us_west_1.pem
 
     - name: Write UAT JSON to file
       env:
         USER_JSON: ${{ secrets.CATALOG_AWS_US_WEST_1_CONFIG }}
       run: |
-        echo "$USER_JSON" > config/user.credentials.local.json
+        echo "$USER_JSON" > configs/user.credentials.local.json
 
     - name: Teardown any previous deployment
       run: docker run -i -v $HOME/configs/:/mnt/deployer/configs/ --entrypoint ruby ghcr.io/newrelic/deployer main.rb -d ${{ matrix.deployment }} -t
