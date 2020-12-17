@@ -12,9 +12,17 @@ A demo story is a set of services that are deployed to show off a particular com
 
 [Follow our Getting Started guide](GETTING_STARTED.md) to deploy your first demo story.
 
+## Learn about a deployment configuration
+
+[Follow our Tutorials](tutorials/README.md) to learn how to create a simple deployment configuration.
+
 ## Catalog
 
 Have a look at the full [demo catalog](catalog/README.md) to see what demo stories you can deploy.
+
+## Demo Building Blocks
+
+[Find what building blocks](DEMO_BUILDING_BLOCKS.MD) are available to build your own deployment configuration.
 
 ## Related repositories
 * [demo-deployer](https://github.com/newrelic/demo-deployer): Responsible for deploying and configuring the demo story in various cloud providers.
