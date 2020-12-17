@@ -53,6 +53,10 @@ Current Behaviors
 * [Compute](compute/README.md)
 * [Memory Allocation](malloc/README.md)
 
+### Driving traffic
+
+To drive traffic over a service tron the [demo-simulator](https://github.com/newrelic/demo-simulator) is a great fit.  The simulator is a simple NodeJS based web service that can be configured drive traffic to a set of services or HTML pages.  The simulator can be configured to run many different [scenarios](https://github.com/newrelic/demo-simulator#scenario).
+
 ## [Instrumentation](https://github.com/newrelic/demo-newrelic-instrumentation)
 
 Instrumentation can be setup for most of the resources and service that are currently supported by the demo-deployer. Setting up instrumentation allows for getting insights into the inner workings of the resource and services.
