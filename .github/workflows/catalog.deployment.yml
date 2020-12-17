@@ -1,0 +1,35 @@
+name: Catalog Deployments
+
+on: [workflow_dispatch]
+
+jobs:
+  aws-catalog:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        deployment: [
+          'https://raw.githubusercontent.com/newrelic/demo-catalog/main/catalog/hello.aws.json'
+        ]
+    steps:
+    - name: Checkout Repo
+      uses: actions/checkout@v2
+
+    - name: Write AWS Certificate to File
+      env:
+        AWS_PEM: ${{ secrets.CATALOG_DEPLOY_V3_AWS_US_WEST_1_PEM }}
+      run: |
+        rm -f catalog_us_west_1.pem
+        echo "$AWS_PEM" > catalog_us_west_1.pem
+        sudo chmod 400 catalog_us_west_1.pem
+
+    - name: Write UAT JSON to file
+      env:
+        USER_JSON: ${{ secrets.CATALOG_AWS_US_WEST_1_CONFIG }}
+      run: |
+        echo "$USER_JSON" > catalog.json.local
+
+    - name: Teardown any previous deployment
+      run: docker run -i --entrypoint ruby ghcr.io/newrelic/deployer main.rb -c catalog.json.local -d ${{ matrix.deployment }} -t
+
+    - name: Run deployer
+      run: docker run -i --entrypoint ruby ghcr.io/newrelic/deployer main.rb -c catalog.json.local -d ${{ matrix.deployment }}
