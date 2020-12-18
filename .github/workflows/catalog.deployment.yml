@@ -30,8 +30,5 @@ jobs:
       run: |
         echo "$USER_JSON" > $HOME/configs/user.credentials.local.json
 
-    - name: Teardown any previous deployment
-      run: docker run -i -v $HOME/configs/:/mnt/deployer/configs/ --entrypoint ruby ghcr.io/newrelic/deployer main.rb -d ${{ matrix.deployment }} -t
-
     - name: Run deployer
       run: docker run -i -v $HOME/configs/:/mnt/deployer/configs/ --entrypoint ruby ghcr.io/newrelic/deployer main.rb -d ${{ matrix.deployment }}
