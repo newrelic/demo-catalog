@@ -432,7 +432,7 @@
                 "id": "nr_golden_dashboard",
                 "provider": "newrelic",
                 "provider_credential": "aws",
-                "source_repository": "-b update_terraform_dashboard_version  https://github.com/newrelic/demo-newrelic-instrumentation.git",
+                "source_repository": "https://github.com/newrelic/demo-newrelic-instrumentation.git",
                 "deploy_script_path": "deploy/dashboards/golden/terraform/roles",
                 "params": {
                     "s3_bucketname_tfstate": "terraform-[global:deployment_name]"
