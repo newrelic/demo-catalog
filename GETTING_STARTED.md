@@ -24,7 +24,7 @@ $ mkdir -p $HOME/demo-deployer/configs
 
 You'll store your configuration files in this folder to make it easy for the deployer.
 
-Next, follow the steps [here to create your local user config file](https://github.com/newrelic/demo-deployer/blob/main/documentation/user_config/README.md). You can store your local user config file at `$HOME/demo-deployer/configs/user.credentials.local.json` and the deployer will pick up your user configuration automatically. If you name your user config file differently, you will need to pass the '-c' flag with the path and name of your user config file.
+Next, follow the steps [here to create your local user config file](https://github.com/newrelic/demo-deployer/blob/main/documentation/user_config/README.md). You can store your local user config file at `$HOME/demo-deployer/configs/$USER.credentials.local.json` and the deployer will pick up your user configuration automatically.  If you have more than one '*.credentials.local.json' file in your configs directory the deployer will raise an error.  You will need to pass the '-c' flag with the path and name of the user config file you want to use or remove one of the user config files.
 
 ## Select a demo scenario
 
