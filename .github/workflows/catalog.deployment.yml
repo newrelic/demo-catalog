@@ -28,7 +28,7 @@ jobs:
       env:
         USER_JSON: ${{ secrets.CATALOG_AWS_US_WEST_1_CONFIG }}
       run: |
-        echo "$USER_JSON" > $HOME/configs/user.credentials.local.json
+        echo "$USER_JSON" > $HOME/configs/catalog.credentials.local.json
 
     - name: Run deployer
       run: docker run -i -v $HOME/configs/:/mnt/deployer/configs/ --entrypoint ruby ghcr.io/newrelic/deployer main.rb -d ${{ matrix.deployment }}
