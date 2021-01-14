@@ -1,0 +1,118 @@
+{
+    "global_tags": {
+        "dxOwningTeam": "DemoX",
+        "dxEnvironment": "development",
+        "dxDepartment": "Area51",
+        "dxProduct": "mysql"
+    },
+    "services": [
+        {
+            "id": "simulator",
+            "source_repository": "https://github.com/newrelic/demo-simulator.git",
+            "deploy_script_path": "deploy/linux/roles",
+            "port": 6003,
+            "destinations": [
+                "host1"
+            ],
+            "files": [
+                {
+                    "destination_filepath": "engine/startScenario.json",
+                    "content": [
+                        {
+                            "id": "scenarioConsumer",
+                            "rpm": "30",
+                            "steps": [
+                                {
+                                    "name": "httpGet",
+                                    "params": [
+                                        "[service:inventory]/api/query"
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "mysql",
+            "display_name": "Inventory database",
+            "source_repository": "https://github.com/newrelic/demo-services.git",
+            "deploy_script_path": "deploy/mariadb/linux/roles",
+            "port": 6002,
+            "destinations": [
+                "host1"
+            ],
+            "params": {
+                "database_user": "demotron",
+                "database_password": "[credential:secrets:database_password]",
+                "database_root_password": "[credential:secrets:database_root_password]"
+            }
+        },
+        {
+            "id": "inventory",
+            "display_name": "Inventory service",
+            "source_repository": "https://github.com/newrelic/demo-nodetron.git",
+            "deploy_script_path": "deploy/linux/roles",
+            "port": 6001,
+            "destinations": [
+                "host1"
+            ],
+            "params": {
+                "database_user": "[service:mysql:params:database_user]",
+                "database_password": "[credential:secrets:database_password]",
+                "database_host": "[resource:host1:ip]",
+                "database_port": "[service:mysql:port]"
+            }
+        }
+    ],
+    "resources": [
+        {
+            "id": "host1",
+            "display_name": "Inventory host",
+            "provider": "aws",
+            "type": "ec2",
+            "size": "t3.small"
+        }
+    ],
+    "instrumentations": {
+        "services": [
+            {
+                "id": "nr_node_agent",
+                "service_ids": [
+                    "inventory"
+                ],
+                "provider": "newrelic",
+                "source_repository": "https://github.com/newrelic/demo-newrelic-instrumentation.git",
+                "deploy_script_path": "deploy/node/linux/roles",
+                "version": "6.13.0"
+            },
+            {
+                "id": "nr_mysql_integration",
+                "service_ids": [
+                    "mysql"
+                ],
+                "provider": "newrelic",
+                "source_repository": "https://github.com/newrelic/demo-newrelic-instrumentation.git",
+                "deploy_script_path": "deploy/databases/mysql/linux/roles",
+                "version": "1.4.0",
+                "params": {
+                    "database_root_password": "[credential:secrets:database_root_password]",
+                    "database_port": "[service:mysql:port]"
+                }
+            }
+        ],
+        "resources": [
+            {
+                "id": "nr_infra",
+                "resource_ids": [
+                    "host1"
+                ],
+                "provider": "newrelic",
+                "source_repository": "https://github.com/newrelic/demo-newrelic-instrumentation.git",
+                "deploy_script_path": "deploy/linux/roles",
+                "version": "1.12.4"
+            }
+        ]
+    }
+}
