@@ -1,12 +1,3 @@
----
-name: Pull request
-about: Describe your changes to the repository
-title: ''
-labels: enhancement, needs-triage
-assignees: ''
-
----
-
 ## Summary
 
 [NOTE]: # ( Provide a brief overview of the changes. )
