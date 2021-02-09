@@ -86,32 +86,26 @@
                 "source_repository": "https://github.com/newrelic/demo-newrelic-instrumentation.git",
                 "deploy_script_path": "deploy/node/linux/roles",
                 "version": "6.13.0"
-            },
-            {
-                "id": "nr_mysql_integration",
-                "service_ids": [
-                    "mysql"
-                ],
-                "provider": "newrelic",
-                "source_repository": "https://github.com/newrelic/demo-newrelic-instrumentation.git",
-                "deploy_script_path": "deploy/databases/mysql/linux/roles",
-                "version": "1.4.0",
-                "params": {
-                    "database_root_password": "[credential:secrets:database_root_password]",
-                    "database_port": "[service:mysql:port]"
-                }
             }
         ],
         "resources": [
             {
-                "id": "nr_infra",
-                "resource_ids": [
-                    "host1"
-                ],
+                "id": "nr_open_install_library",
+                "resource_ids": [ "host1" ],
                 "provider": "newrelic",
                 "source_repository": "https://github.com/newrelic/demo-newrelic-instrumentation.git",
-                "deploy_script_path": "deploy/linux/roles",
-                "version": "1.12.4"
+                "deploy_script_path": "deploy/open-install-library/linux/roles",
+                "params": {
+                    "recipe_content_urls": [
+                        "https://raw.githubusercontent.com/newrelic/open-install-library/main/recipes/newrelic/infrastructure/amazonlinux2.yml",
+                        "https://raw.githubusercontent.com/newrelic/open-install-library/main/recipes/newrelic/infrastructure/logs/logs.yml",
+                        "https://raw.githubusercontent.com/newrelic/open-install-library/main/recipes/newrelic/infrastructure/ohi/mysql/rhel.yml"
+                    ],
+                    "NR_CLI_DB_USERNAME" : "root",
+                    "NR_CLI_DB_PASSWORD" : "[credential:secrets:database_root_password]",
+                    "NR_CLI_DB_PORT" : "[service:mysql:port]",
+                    "NR_CLI_DATABASE" : "[service:node1:id]"
+                }
             }
         ]
     }
