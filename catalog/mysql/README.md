@@ -1,10 +1,10 @@
 # MySQL Demo
-Get your first taste of New Relic infrastructure integrations with MySQL! This demo runs on a single host with a simulator, Node.js application, and a MySQL database.
+Get your first taste of New Relic infrastructure integrations with MySQL and the Open Install Library! This demo runs on a single host with a simulator, Node.js application, and a MySQL database. The Open Install Library is used to automatically instrument the host and MySQL instance with corresponding installation tasks.
 
 ## Prerequisites
-* An environment set up by follow the [Getting Started guide](../../GETTING_STARTED.md)
-* A database password and root password added to the `secrets` of your user configuration file. Like so:
-  ```
+* An environment set up by following the [Getting Started guide](../../GETTING_STARTED.md)
+* A database password and root database password added to the `secrets` of your user configuration file. Like so:
+  ```json
   {
   ...
 
@@ -14,7 +14,7 @@ Get your first taste of New Relic infrastructure integrations with MySQL! This d
     }
   }
   ```
-  Read more about the `secrets` field [here](https://github.com/newrelic/demo-deployer/blob/main/documentation/user_config/secrets.md)
+Read more about the `secrets` field [here](https://github.com/newrelic/demo-deployer/blob/main/documentation/user_config/secrets.md)
 
 ## Guide
 When your environment is ready to go, use one of the commands below to deploy your application.
