@@ -1,6 +1,12 @@
 name: Catalog Deployments
 
-on: [workflow_dispatch]
+on:
+  workflow_dispatch:
+    inputs:
+      command:
+        description: "Either 'deploy' or 'teardown'"
+        required: true
+        default: "deploy"
 
 jobs:
   aws-catalog:
@@ -30,5 +36,12 @@ jobs:
       run: |
         echo "$USER_JSON" > $HOME/configs/catalog.credentials.local.json
 
-    - name: Run deployer
+    - name: Run deployer - Teardown
+      run: docker run -i -v $HOME/configs/:/mnt/deployer/configs/ --entrypoint ruby ghcr.io/newrelic/deployer main.rb -d ${{ matrix.deployment }} -t
+      if: github.event.inputs.command == 'teardown'
+
+    - name: Run deployer - Deployment
       run: docker run -i -v $HOME/configs/:/mnt/deployer/configs/ --entrypoint ruby ghcr.io/newrelic/deployer main.rb -d ${{ matrix.deployment }}
+      if: github.event.inputs.command == 'deploy'
+
+
