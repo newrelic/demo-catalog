@@ -104,7 +104,7 @@
                     "NR_CLI_DB_USERNAME" : "root",
                     "NR_CLI_DB_PASSWORD" : "[credential:secrets:database_root_password]",
                     "NR_CLI_DB_PORT" : "[service:mysql:port]",
-                    "NR_CLI_DATABASE" : "[service:node1:id]"
+                    "NR_CLI_DATABASE" : "inventory"
                 }
             }
         ]
