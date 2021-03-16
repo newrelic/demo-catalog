@@ -19,13 +19,32 @@
                     "destination_filepath": "engine/startScenario.json",
                     "content": [
                         {
-                            "id": "scenarioConsumer",
+                            "id": "baseTraffic",
                             "rpm": "30",
                             "steps": [
                                 {
                                     "name": "httpGet",
                                     "params": [
-                                        "[service:inventory]/api/query"
+                                        "[service:inventory]/api/inventory"
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "id": "errors",
+                            "rpm": "5",
+                            "steps": [
+                                {
+                                    "name": "header",
+                                    "params": [
+                                        "x-demo-invalid-query-pre",
+                                        "0"
+                                    ]
+                                },
+                                {
+                                    "name": "httpGet",
+                                    "params": [
+                                        "[service:inventory]/api/inventory/9"
                                     ]
                                 }
                             ]
@@ -91,7 +110,9 @@
         "resources": [
             {
                 "id": "nr_open_install_library",
-                "resource_ids": [ "host1" ],
+                "resource_ids": [
+                    "host1"
+                ],
                 "provider": "newrelic",
                 "source_repository": "https://github.com/newrelic/demo-newrelic-instrumentation.git",
                 "deploy_script_path": "deploy/open-install-library/linux/roles",
@@ -101,10 +122,10 @@
                         "https://raw.githubusercontent.com/newrelic/open-install-library/main/recipes/newrelic/infrastructure/logs/logs.yml",
                         "https://raw.githubusercontent.com/newrelic/open-install-library/main/recipes/newrelic/infrastructure/ohi/mysql/rhel.yml"
                     ],
-                    "NR_CLI_DB_USERNAME" : "root",
-                    "NR_CLI_DB_PASSWORD" : "[credential:secrets:database_root_password]",
-                    "NR_CLI_DB_PORT" : "[service:mysql:port]",
-                    "NR_CLI_DATABASE" : "inventory"
+                    "NR_CLI_DB_USERNAME": "root",
+                    "NR_CLI_DB_PASSWORD": "[credential:secrets:database_root_password]",
+                    "NR_CLI_DB_PORT": "[service:mysql:port]",
+                    "NR_CLI_DATABASE": "inventory"
                 }
             }
         ]

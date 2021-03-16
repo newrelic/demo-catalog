@@ -1,5 +1,5 @@
 # MySQL Demo
-Get your first taste of New Relic infrastructure integrations with MySQL and the Open Install Library! This demo runs on a single host with a simulator, Node.js application, and a MySQL database. The Open Install Library is used to automatically instrument the host and MySQL instance with corresponding installation tasks.
+Get your first taste of New Relic infrastructure integrations with MySQL and the Open Install Library! This demo runs on a single host with a simulator, Node.js application, and a MySQL database. It features a MySQL error that triggers five times a minute. The Open Install Library is used to automatically instrument the host and MySQL instance with corresponding installation tasks.
 
 ## Prerequisites
 * An environment set up by following the [Getting Started guide](../../GETTING_STARTED.md)
