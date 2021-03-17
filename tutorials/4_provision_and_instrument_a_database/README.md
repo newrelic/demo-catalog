@@ -8,6 +8,8 @@ If you have not got the demo-deployer setup please follow our [getting started g
 
 This tutorial will show you how to provision and instrument a database service -- mysql for this tutorial -- as well as how to reference the database service from another service within the deployment config.
 
+If you haven't seen or interacted with `merge fields` in the V3 deployer before, the configuration file shown below may look confusing. You can read all about `merge fields` [here](https://github.com/newrelic/demo-deployer/tree/main/documentation/deploy_config/merge_fields).
+
 ## Additional User Configuration Setup
 
 The database resource requires changes to your user configuration file. You will need to add a new field -- `secrets` -- in the credentials field. The documentation for this field can be found [here](https://github.com/newrelic/demo-deployer/blob/main/documentation/user_config/secrets.md).
