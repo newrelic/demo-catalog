@@ -117,6 +117,16 @@ Here is a summary of each field within secrets:
 }
 ```
 
+Here is a summary of the database fields within the config:
+
+| Field Name               |  Field Description |
+| ------------------------ | ------------------ |
+| database_user            | name of database user created |
+| database_password        | password created for database_user |
+| database_host            | ip address of the host the database is running on |
+| database_port            | port to connect to |
+| database_root_password   | password created for the root user |
+
 ### Note - Params
 
 Params is a dynamic field where any key, value pair entered is passed unto the underlying play. This is the general functionality of params across sections. Within a particular section, params may be validated & treated differently, as well as different params being needed in order for a play to successfully run.
