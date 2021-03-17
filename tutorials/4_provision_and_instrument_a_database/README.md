@@ -117,7 +117,7 @@ Here is a summary of each field within secrets:
 
 ### Note - Params
 
-Parmas is a dynamic field where any key, value pair entered is passed unto the underlying play. This is the general functionality of params across sections. Within a particular section, params may be validated & treated differently, as well as different params being needed in order for a play to successfully run.
+Params is a dynamic field where any key, value pair entered is passed unto the underlying play. This is the general functionality of params across sections. Within a particular section, params may be validated & treated differently, as well as different params being needed in order for a play to successfully run.
 
 ## Running the deployment
 
