@@ -115,7 +115,7 @@ $ docker run -it\
 File '/path/to/jsmith.pem' doesn't exist
 The pem key file '/path/to/jsmith.pem' does not have the correct permissions.  To fix run 'chmod 400 /path/to/jsmith.pem''.
 ```
-This may indicate the incorrect path in your configuration. NOTE: all paths in the config should reference the mounted volume file structure in the above examle, the key paths would be set as `/mnt/deployer/configs/jsmithUsWest2.pem`.
+This may indicate the incorrect path in your configuration. NOTE: all paths in the config should reference the mounted volume file structure in the above example, the key paths would be set as `/mnt/deployer/configs/jsmithUsWest2.pem`.
 
 
 ### Deployer Debug verbosity
