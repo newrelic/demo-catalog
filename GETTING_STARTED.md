@@ -105,6 +105,19 @@ See ‘docker run --help’.
 
 This typically happens when your docker application is not running (in the background). Find the Docker application on your machine, and start it. You should see the docker icon on your desktop indicating that docker is running. Then, you can try to deploy again.
 
+### File Doesn't Exist errors
+```console
+$ docker run -it\
+    -v $HOME/demo-deployer/configs/:/mnt/deployer/configs/\
+    --entrypoint ruby ghcr.io/newrelic/deployer main.rb -d <demo-url>
+(...)
+[ERROR] Infrastructure validation has failed
+File '/path/to/jsmith.pem' doesn't exist
+The pem key file '/path/to/jsmith.pem' does not have the correct permissions.  To fix run 'chmod 400 /path/to/jsmith.pem''.
+```
+This may indicate the incorrect path in your configuration. NOTE: all paths in the config should reference the mounted volume file structure in the above example, the key paths would be set as `/mnt/deployer/configs/jsmithUsWest2.pem`.
+
+
 ### Deployer Debug verbosity
 
 You may want to see a more detailed output of what the deployer is doing. You can add `-l debug` to make the output more verbose:
